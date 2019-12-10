@@ -32,8 +32,6 @@
             return;
           }
           const info = await response.json();
-          console.log(accordion.items);
-          
           accordion.items = initialItems.concat(info);
         }
       });
