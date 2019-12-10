@@ -6,9 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c --environment BUILD:prod",
-    "watch": "npx watch 'npm run dev' src",
-    "start": "npm run dev && npx browser-sync start --server 'www' --files 'www' & npm run watch",
-    "dev": "rollup -c"
+    "watch": "watch \"npm run dev\" src",
+    "start": "npm run dev && concurrently \"npm run watch\" \"npm run server\"",
+    "dev": "rollup -c",
+    "server": "npx es-dev-server --app-index www/index.html --node-resolve --watch --open"
   },
   "keywords": [
     "vanillajs",
@@ -23,6 +24,7 @@
     "@babel/runtime": "^7.0.0",
     "@testing-library/dom": "^6.10.1",
     "browser-sync": "^2.26.7",
+    "concurrently": "^5.0.1",
     "es-dev-server": "^1.29.0",
     "eslint": "^6.7.2",
     "eslint-config-airbnb-base": "^14.0.0",
