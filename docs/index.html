@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+  <head>
+    <title>Vanilla Accordion dev</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />  
+    <script type="module" src="./accordion/accordion.esm.js"></script>
+    <script nomodule src="./accordion/accordion.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(event) {
+        const accordion = document.querySelector("vjs-accordion");
+        const initialItems = [
+          {
+            term: "Quiénes somos",
+            description:
+              "Adevinta es un especialista en marketplaces. Ayudamos a prosperar a nuestros marketplaces locales mediante conexiones globales y redes de conocimiento. "
+          },
+          {
+            term: "Nuestra estrategia",
+            description:
+              "La misión de Adevinta es establecer conexiones perfectas en los marketplaces más fiables del mundo."
+          },
+          {
+            term: "El Consejo de administración",
+            description:
+              "Conforme al derecho de sociedades, el Consejo de Administración es responsable de la gestión general de la empresa, mientras que el CEO es responsable de la gestión diaria."
+          }
+        ];
+        accordion.items = initialItems;
+        document.getElementById('requestButton').onclick = async ()=> {
+          const response = await fetch('./assets/info.json');
+          if(response.status !== 200){
+            return;
+          }
+          const info = await response.json();
+          accordion.items = initialItems.concat(info);
+        }
+      });
+    </script>
+  </head>
+  <body>
+<style>
+  button{
+    background-color: lightgreen;
+    color: #626671;
+    font-size: 1rem;
+    width: 10rem;
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  vjs-accordion{
+    max-width: 30rem;
+    display: block;
+    margin: 10rem auto;
+  }
+</style>
+    <!-- Custom accordion component -->
+    <vjs-accordion></vjs-accordion>
+    <div>
+      <button id="requestButton">Get more info</button>
+    </div>
+  </body>
+</html>
