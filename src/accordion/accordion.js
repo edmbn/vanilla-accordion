@@ -75,29 +75,24 @@ class Accordion extends HTMLElement {
     });
   }
 
+  /**
+   * Function to handle which elements have to modify their styles
+   * @param {number} id
+   */
   selectElement(id) {
-    const newSelected = this.shadowRoot.querySelector(
-      `[data-description-id="${id}"]`,
-    );
     if (this.selectedItem && this.selectedItem === id) {
-      Accordion.collapseItem(newSelected);
+      this.modifyItem(id, 'collapse');
       this.selectedItem = '';
       return;
     }
     if (this.selectedItem) {
-      const currentExpanded = this.shadowRoot.querySelector(
-        `[data-description-id="${this.selectedItem}"]`,
-      );
-      Accordion.collapseItem(currentExpanded);
+      this.modifyItem(this.selectedItem, 'collapse');
 
       // Wait until collapse transition of latest item finishes
-      setTimeout(() => {
-        newSelected.classList.remove('Description--collapsed');
-        Accordion.expandItem(newSelected);
-        this.selectedItem = id;
-      }, 300);
+      this.modifyItem(id, 'expand', true);
+      this.selectedItem = id;
     } else {
-      Accordion.expandItem(newSelected);
+      this.modifyItem(id, 'expand');
       this.selectedItem = id;
     }
   }
@@ -106,16 +101,24 @@ class Accordion extends HTMLElement {
    * Collapse element by adding collapsed class
    * @param {HTMLElement} item
    */
-  static collapseItem(item) {
-    item.classList.add('Description--collapsed');
-  }
-
-  /**
-   * Expand item by removing collapsed class
-   * @param {HTMLElement} item
-   */
-  static expandItem(item) {
-    item.classList.remove('Description--collapsed');
+  modifyItem(id, modifier, wait = false) {
+    const descriptionEl = this.shadowRoot.querySelector(
+      `[data-description-id="${id}"]`,
+    );
+    const termEl = this.shadowRoot.querySelector(`[data-term-id="${id}"]`);
+    if (modifier === 'collapse') {
+      descriptionEl.classList.add('Description--collapsed');
+      termEl.classList.remove('Term--selected');
+    } else {
+      if (wait) {
+        setTimeout(() => {
+          descriptionEl.classList.remove('Description--collapsed');
+        }, 300);
+      } else {
+        descriptionEl.classList.remove('Description--collapsed');
+      }
+      termEl.classList.add('Term--selected');
+    }
   }
 }
 

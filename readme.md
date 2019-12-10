@@ -33,7 +33,7 @@
 |            Variable             |  Default  |
 | :-----------------------------: | :-------: |
 |         `--List-height`         |   300px   |
-|       `--Term-background`       |  #2900d2  |
+|       `--Term-background`       |  #4e90a9  |
 |       `--Term-textColor`        |   #fff    |
 |       `--Term-fontWeight`       |    700    |
 |      `--Term-borderRadius`      |   10px    |
