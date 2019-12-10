@@ -1,0 +1,56 @@
+@import '../global/variables';
+
+:host {
+  --List-height: 300px;
+  --Term-background: #{$colorPrimary};
+  --Term-textColor: #{$textSecondary};
+  --Term-fontWeight: 700;
+  --Term-borderRadius: 10px;
+  --Term-borderWidth: 0 0 1px 0;
+  --Term-borderColor: #fff;
+  --Term-borderStyle: solid;
+  --Description-backgroundColor: #c0dfe8;
+  --Description-textColor: #{$textPrimary};
+  --Description-textSize: 1rem;
+}
+.List {
+  border-radius: var(--Term-borderRadius);
+  display: flex;
+  flex-direction: column;
+  height: var(--List-height);
+}
+
+.Term {
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  padding: 0.75rem;
+  text-align: center;
+  border-width: var(--Term-borderWidth);
+  border-color: var(--Term-borderColor);
+  border-style: var(--Term-borderStyle);
+  background-color: var(--Term-backgroundColor);
+  background: var(--Term-background);
+  color: var(--Term-textColor);
+
+  &:last-of-type {
+    border: none;
+  }
+}
+
+.Description {
+  overflow: hidden;
+  transition: flex 0.3s ease-out;
+  height: auto;
+  background-color: var(--Description-backgroundColor);
+  flex: 1;
+  max-height: fit-content;
+  margin-left: 0;
+
+  &.Description--collapsed {
+    flex: 0;
+  }
+
+  .Description-text {
+    padding: 0 2rem;
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "vanilla-accordion",
+  "version": "1.0.0",
+  "description": "Accordion component buit with pure Vanilla JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c --environment BUILD:prod",
+    "watch": "npx watch 'npm run dev' src",
+    "start": "npm run dev && npx browser-sync start --server 'www' --files 'www' & npm run watch",
+    "dev": "rollup -c"
+  },
+  "keywords": [
+    "vanillajs",
+    "accordion"
+  ],
+  "author": "Eduard Monfort Bonjoch",
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@testing-library/dom": "^6.10.1",
+    "browser-sync": "^2.26.7",
+    "es-dev-server": "^1.29.0",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.19.1",
+    "rollup": "^1.27.9",
+    "rollup-plugin-babel": "^4.0.2",
+    "rollup-plugin-copy": "^3.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-sass": "^1.2.2",
+    "rollup-plugin-uglify": "^6.0.3",
+    "watch": "^1.0.2"
+  }
+}
