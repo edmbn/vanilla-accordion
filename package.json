@@ -4,7 +4,7 @@
   "description": "Accordion component buit with pure Vanilla JS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "rollup -c --environment BUILD:prod",
     "watch": "watch \"npm run dev\" src",
     "start": "npm run dev && concurrently \"npm run watch\" \"npm run server\"",
@@ -23,6 +23,8 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/runtime": "^7.0.0",
     "@testing-library/dom": "^6.10.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/user-event": "^7.1.2",
     "browser-sync": "^2.26.7",
     "concurrently": "^5.0.1",
     "es-dev-server": "^1.29.0",

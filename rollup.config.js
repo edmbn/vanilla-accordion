@@ -1,8 +1,8 @@
 import babel from 'rollup-plugin-babel';
-import resolve from 'rollup-plugin-node-resolve';
-import { uglify } from 'rollup-plugin-uglify';
-import sass from 'rollup-plugin-sass';
 import copy from 'rollup-plugin-copy';
+import resolve from 'rollup-plugin-node-resolve';
+import sass from 'rollup-plugin-sass';
+import { uglify } from 'rollup-plugin-uglify';
 
 const getEnvPlugins = (prod) => {
   let plugins = [
